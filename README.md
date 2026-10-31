@@ -8,15 +8,24 @@
   [![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-blue)](https://github.com/dafricnatopu/flux-optimizer-tool/releases/latest)
 </div>
 
-## Download Flux 1.1.0
+## Download Flux 1.2.0
 
-[**Download the Windows x64 installer**](https://github.com/dafricnatopu/flux-optimizer-tool/releases/download/v1.1.0/FluxOptimizer-Setup-v1.1.0.exe)
+[**Download the Windows x64 installer**](https://github.com/dafricnatopu/flux-optimizer-tool/releases/download/v1.2.0/FluxOptimizer-Setup-v1.2.0.exe)
 
-Run `FluxOptimizer-Setup-v1.1.0.exe`. Administrator permission is requested when a selected system operation needs it.
+Run `FluxOptimizer-Setup-v1.2.0.exe`. Administrator permission is requested when a selected system operation needs it.
 
-**Updating from 1.0.1? Install 1.1.0 manually.** Older builds may use the previous update feed. This release uses the public release feed in this repository.
+**Updating from 1.0.1? Install 1.2.0 manually.** Older builds may use the previous update feed. This release uses the public release feed in this repository.
 
 The `.blockmap` and `latest.yml` release assets support the app updater; download the `.exe` to install Flux.
+
+## New in 1.2.0
+
+- **Why is my PC slow?** Read-only checks for common power, CPU, memory, graphics, disk and restart-related causes, with specific findings and next steps.
+- **Disk health and copyable report:** device-reported health, available wear/temperature/error counters and a plain-text PC summary for support.
+- **Network diagnostics:** active connection details, router/internet ping, jitter, packet loss and real DNS lookup timing.
+- **Big items:** review large old downloads, leftover driver installers and hibernation usage; integrate Windows' own cleanup tools and Storage Sense.
+- **Toolbox and tweaks:** Windows Update repair, memory diagnostic, online disk scan, battery report and additional reversible Explorer/taskbar preferences.
+- **Updates in Settings:** check the public release feed and download a newer app version when available.
 
 ## Features
 
@@ -30,7 +39,11 @@ The `.blockmap` and `latest.yml` release assets support the app updater; downloa
 - **Registry adjustments:** inspect supported settings, save original values and restore them instead of guessing defaults.
 - **Activity and recovery:** local action history, Windows utilities and restore-point tools.
 
-See the [1.1.0 changelog and verification limits](CHANGELOG.md) and [all releases](https://github.com/dafricnatopu/flux-optimizer-tool/releases).
+See the [1.2.0 changelog and verification limits](CHANGELOG.md) and [all releases](https://github.com/dafricnatopu/flux-optimizer-tool/releases).
+
+## Verification
+
+49 automated tests passed. The renderer and Windows x64 installer are built locally; release downloads include checksums. See the changelog for limitations. Device health counters and network measurements are diagnostic observations, not guarantees.
 
 ## Before changing Windows
 
