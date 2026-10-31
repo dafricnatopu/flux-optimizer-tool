@@ -1,55 +1,48 @@
 <div align="center">
-  <img src="./flux_optimizer_readme_banner.svg" alt="Flux Optimizer Banner" width="100%" />
-  
-  **The ultimate, elegantly designed system optimization and cleaning tool for Windows.**
+  <img src="./flux_optimizer_readme_banner.svg" alt="Flux Optimizer" width="100%" />
 
-  [![Platform: Windows](https://img.shields.io/badge/Platform-Windows-blue.svg)](#)
-  [![Downloads](https://img.shields.io/github/downloads/YourUsername/flux-optimizer/total.svg)](#)
+  **A Windows maintenance and system-inspection app.**
 
-  <p align="center">
-    <i>Stop dealing with bloated, ugly system cleaners. Flux Optimizer brings modern design, <br/> blazing fast performance, and safe system tweaks into one beautiful package.</i>
-  </p>
+  [![Latest release](https://img.shields.io/github/v/release/dafricnatopu/flux-optimizer-tool)](https://github.com/dafricnatopu/flux-optimizer-tool/releases/latest)
+  [![Downloads](https://img.shields.io/github/downloads/dafricnatopu/flux-optimizer-tool/total)](https://github.com/dafricnatopu/flux-optimizer-tool/releases)
+  [![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-blue)](https://github.com/dafricnatopu/flux-optimizer-tool/releases/latest)
 </div>
 
----
+## Download Flux 1.1.0
 
-## ✨ Features
+[**Download the Windows x64 installer**](https://github.com/dafricnatopu/flux-optimizer-tool/releases/download/v1.1.0/FluxOptimizer-Setup-v1.1.0.exe)
 
-- 🎛️ **Live Dashboard:** Real-time monitoring of CPU, RAM, GPU, Disk, and Network usage.
-- 🧹 **Deep Cleaner:** Safely remove gigabytes of temporary files, cache, and unnecessary system logs with one click.
-- 🚀 **Startup Manager:** Control exactly what launches when your PC boots to improve startup times.
-- 🌐 **Network & DNS Optimizer:** Easily switch to the fastest secure DNS servers (Cloudflare, Quad9, Google) and monitor live speeds.
-- 🛠️ **System Tweaks:** Safely apply recommended Windows tweaks for gaming, privacy, and performance.
-- 🎨 **Premium UI:** Dark mode, glassmorphism, and smooth animations.
+Run `FluxOptimizer-Setup-v1.1.0.exe`. Administrator permission is requested when a selected system operation needs it.
 
-## 📸 Screenshots
+**Updating from 1.0.1? Install 1.1.0 manually.** Older builds may use the previous update feed. This release uses the public release feed in this repository.
 
-<img src="./mockupflux.jpg" alt="Flux Optimizer Dashboard" width="100%" />
+The `.blockmap` and `latest.yml` release assets support the app updater; download the `.exe` to install Flux.
 
-## 📥 Download & Installation
+## Features
 
-1. Go to the **[Releases](../../releases)** tab.
-2. Download the latest `FluxOptimizer-Setup.exe`.
-3. Run the installer and enjoy a faster PC!
+- **Live overview:** CPU, GPU, memory, system-drive storage and labelled download/upload rates, with clear high-usage states and review actions.
+- **Personal appearance:** custom image/GIF backgrounds, blur, dimming and accent colors.
+- **Diagnostics:** available CPU/GPU temperatures and clocks, recent load balance and a read-only Windows security overview, including third-party antivirus detection.
+- **System check:** specific findings with verified-check coverage. Unsupported sensors and unsuccessful Windows queries remain unverified.
+- **Running apps:** grouped CPU/memory usage and confirmation before closing a user app; protected Windows/Flux processes cannot be ended here.
+- **Cleaner:** scan selected categories, preserve recent files, pinned jump lists and unfinished downloads, and report actual cleanup results. Emptying the Recycle Bin requires separate confirmation.
+- **Startup and DNS:** review startup registry entries; change IPv4 DNS on a selected adapter and restore its original automatic/manual configuration.
+- **Registry adjustments:** inspect supported settings, save original values and restore them instead of guessing defaults.
+- **Activity and recovery:** local action history, Windows utilities and restore-point tools.
 
-*Note: Administrator privileges may be required to apply deep system tweaks and manage startup items.*
+See the [1.1.0 changelog and verification limits](CHANGELOG.md) and [all releases](https://github.com/dafricnatopu/flux-optimizer-tool/releases).
 
-## 💎 Premium Version
+## Before changing Windows
 
-Flux Optimizer is free for basic use! For power users, we offer a **Premium License** that unlocks:
-- Advanced Gamer & Privacy Tweaks
-- Auto-cleaning schedules
-- ...and more!
+Create a restore point and review the selected action. Cleanup deletes files permanently; registry/DNS restoration requires an original configuration saved by Flux. A load imbalance alone does not establish a gaming bottleneck, and Flux does not promise an FPS increase.
 
-You can purchase a license key inside the app to instantly unlock these features.
+Automated tests and local checks do not replace exhaustive Windows 10/11 VM testing. Hardware sensors and Windows services may not expose every reading.
 
-## 🤝 Community & Support
+## Community and support
 
-Have an idea for a new feature? Found a bug? 
-- Open an **[Issue](../../issues)** here on GitHub.
-- We read every piece of feedback!
+- [Report an issue](https://github.com/dafricnatopu/flux-optimizer-tool/issues)
+- [Discord community](https://discord.gg/KzadbwmfMz)
 
----
-<div align="center">
-  Made with ❤️ by Dafric
-</div>
+This public repository contains downloads and release documentation. Application source is maintained separately.
+
+Made by Dafric.
