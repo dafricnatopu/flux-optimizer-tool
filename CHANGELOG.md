@@ -1,3 +1,36 @@
+## [1.2.1] - 2026-11-01
+
+### Added
+- Settings shows who made Flux, with links to GitHub, Discord and release notes.
+- A recovery screen when a page fails to load, with Try again and Copy error, instead of an empty window.
+- Disk health can be checked again at any time and shows when it was last read.
+- Activity can show only problems (failed or partly completed actions).
+- Top apps can show more than six apps.
+
+### Changed
+- Notifications have a calmer, readable design: errors stay on screen longer, hovering pauses them and at most three are shown at once.
+- Dates and times follow your Windows region: 24-hour clock in Czechia and most of Europe, 12-hour in the US.
+- Settings is reorganised: updates and appearance first, then startup and window, privacy, support, and advanced settings collapsed at the bottom. Debug tools are hidden in the installed app.
+- The analytics setting explains exactly what is sent when it is turned on (it stays off by default).
+- The license card no longer promises features that don't exist: everything in Flux works without one.
+- Diagnostics names its two checks clearly: "Why is my PC slow?" for slowness, and Quick check for a fast overview.
+- The update window matches the rest of the app, and "Download in the background" now stays in the background as a small progress pill.
+
+### Fixed
+- The installer force-closes Flux without killing its updater child process, then verifies it has exited and keeps the retry prompt if it cannot be closed.
+- The update dialog keeps keyboard focus inside it, supports Escape, and reports failures to start a download.
+- Settings notifications describe the setting that actually changed.
+- Downloading an update in the background no longer reopens the update window on every progress step.
+- "Start minimized" only applies when Flux starts with Windows; opening Flux yourself always shows the window.
+- Windows Updates page no longer crashes when an update comes without a description.
+- "Require administrator" no longer closes Flux for good when the relaunch fails or is declined.
+- Live monitoring uses one long-lived PowerShell instead of starting a new one every few seconds, and reads disk usage at most every 30 seconds, which lowers Flux's own CPU use while it is open.
+- Flux denies camera, microphone, location and notification requests and blocks redirects to untrusted pages.
+- Copy report uses the Windows clipboard directly, so it works reliably.
+- The Tweaks confirmation for risky changes shows the right button text.
+
+See [release notes and verification limits](https://github.com/dafricnatopu/flux-optimizer-tool/releases/tag/v1.2.1).
+
 ## [1.2.0] - 2026-11-01
 
 ### Added
