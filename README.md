@@ -1,59 +1,56 @@
 <div align="center">
-  <img src="./flux_optimizer_readme_banner.svg" alt="Flux Optimizer" width="100%" />
+  <img src="./flux-logo.svg" alt="Flux" width="72" height="72" />
 
-  **A Windows maintenance and system-inspection app.**
+  # Flux
+
+  **Find common PC slowdowns, review Windows problems and maintain your system.**
 
   [![Latest release](https://img.shields.io/github/v/release/dafricnatopu/flux-optimizer-tool)](https://github.com/dafricnatopu/flux-optimizer-tool/releases/latest)
   [![Downloads](https://img.shields.io/github/downloads/dafricnatopu/flux-optimizer-tool/total)](https://github.com/dafricnatopu/flux-optimizer-tool/releases)
   [![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-blue)](https://github.com/dafricnatopu/flux-optimizer-tool/releases/latest)
 </div>
 
-## Download Flux 1.2.1
+## Download Flux 1.3.0
 
-[**Download the Windows x64 installer**](https://github.com/dafricnatopu/flux-optimizer-tool/releases/download/v1.2.1/FluxOptimizer-Setup-v1.2.1.exe)
+[**Download the Windows x64 installer**](https://github.com/dafricnatopu/flux-optimizer-tool/releases/download/v1.3.0/FluxOptimizer-Setup-v1.3.0.exe)
 
-Run `FluxOptimizer-Setup-v1.2.1.exe`. Administrator permission is requested when a selected system operation needs it.
+Run `FluxOptimizer-Setup-v1.3.0.exe`. The `.blockmap` and `latest.yml` assets are for the updater; download the `.exe` to install Flux.
 
-**Updating from 1.0.1? Install 1.2.1 manually.** Older builds may use the previous update feed. This release uses the public release feed in this repository.
+If the installer cannot close an existing Flux instance, save your work and fully quit Flux from its tray menu before retrying. Very old builds using the previous update feed should be updated manually.
 
-The `.blockmap` and `latest.yml` release assets support the app updater; download the `.exe` to install Flux.
+## New in 1.3.0
 
-## New in 1.2.1
+- **Game mode:** supported-game detection, temporary power/gaming settings, optional automatic activation and restoration of saved originals.
+- **Crashes & restarts:** grouped Windows event records, graphics-driver resets, readable error explanations and copyable details.
+- **Share your setup:** a previewable hardware card, saved as PNG without automatic personal names or serial numbers.
+- **A new look:** F logo, six Flux Fold wallpapers, wallpaper downloads, local fonts and a calmer startup screen.
+- **Clearer Overview:** compact live readings, explanations, stale-check indicators and changes since the previous check.
+- Searchable startup apps, more informative disk health and quieter update notifications in the sidebar.
 
-- Installer shutdown fix with exit verification and retry/cancel handling.
-- Background update progress, clearer notifications and reorganised Settings.
-- Refreshable disk health, expanded Top apps and activity problem filtering.
-- Regional date/time formatting, About links and recoverable page errors.
-- Native clipboard and reused monitoring queries.
+See the [full changelog](CHANGELOG.md).
 
-## Features
+## Other tools
 
-- **Live overview:** CPU, GPU, memory, system-drive storage and labelled download/upload rates, with clear high-usage states and review actions.
-- **Personal appearance:** custom image/GIF backgrounds, blur, dimming and accent colors.
-- **Diagnostics:** available CPU/GPU temperatures and clocks, recent load balance and a read-only Windows security overview, including third-party antivirus detection.
-- **System check:** specific findings with verified-check coverage. Unsupported sensors and unsuccessful Windows queries remain unverified.
-- **Running apps:** grouped CPU/memory usage and confirmation before closing a user app; protected Windows/Flux processes cannot be ended here.
-- **Cleaner:** scan selected categories, preserve recent files, pinned jump lists and unfinished downloads, and report actual cleanup results. Emptying the Recycle Bin requires separate confirmation.
-- **Startup and DNS:** review startup registry entries; change IPv4 DNS on a selected adapter and restore its original automatic/manual configuration.
-- **Registry adjustments:** inspect supported settings, save original values and restore them instead of guessing defaults.
-- **Activity and recovery:** local action history, Windows utilities and restore-point tools.
+- Read-only checks for common slowdowns, Windows security and available hardware sensors.
+- Grouped running apps with CPU/memory readings and confirmation before closing supported user apps.
+- Cleaner with conservative defaults and actual cleanup results; optional caches, logs and Recycle Bin cleanup.
+- Connection quality and DNS lookup tests, plus per-adapter DNS changes with saved originals.
+- Supported registry adjustments with original-value backups, startup controls and Windows restore-point tools.
+- Local activity history and shortcuts to Windows maintenance tools.
 
-See the [1.2.1 changelog and verification limits](CHANGELOG.md) and [all releases](https://github.com/dafricnatopu/flux-optimizer-tool/releases).
+## Verification and limits
 
-## Verification
+93 automated tests pass on Windows. The renderer and x64 installer are built locally, and packaged files and updater hashes are checked before publication. SHA-256 checksums are included with the downloads.
 
-50 automated tests passed. The renderer and Windows x64 installer are built locally; release downloads include checksums. See the changelog for limitations. Device health counters and network measurements are diagnostic observations, not guarantees.
+Game mode does not promise an FPS increase. Windows events, network measurements and disk counters are diagnostic observations; missing readings remain unknown. Automatic closure during an in-place upgrade has not been verified for this release. These checks do not replace testing across every Windows version and hardware configuration.
 
-## Before changing Windows
-
-Create a restore point and review the selected action. Cleanup deletes files permanently; registry/DNS restoration requires an original configuration saved by Flux. A load imbalance alone does not establish a gaming bottleneck, and Flux does not promise an FPS increase.
-
-Automated tests and local checks do not replace exhaustive Windows 10/11 VM testing. Hardware sensors and Windows services may not expose every reading.
+System changes can require administrator permission. Review the action and create a restore point when appropriate. Deleted files cannot be recovered through Flux; supported setting restoration requires originals saved by Flux.
 
 ## Community and support
 
 - [Report an issue](https://github.com/dafricnatopu/flux-optimizer-tool/issues)
 - [Discord community](https://discord.gg/KzadbwmfMz)
+- [All releases](https://github.com/dafricnatopu/flux-optimizer-tool/releases)
 
 This public repository contains downloads and release documentation. Application source is maintained separately.
 

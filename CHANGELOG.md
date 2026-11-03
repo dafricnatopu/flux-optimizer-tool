@@ -1,3 +1,28 @@
+## [Unreleased]
+
+## [1.3.0] - 2026-11-03
+
+### Added
+- **Game mode:** detect supported running games, temporarily enable Windows Game Mode and High performance when available, then restore the saved settings. Includes optional automatic activation, per-game GPU preferences and a game card with artwork on Overview.
+- **Crashes & restarts:** read Windows events from the last 7 or 30 days. Repeated app crashes and hangs are grouped by app, module and code; graphics-driver resets, blue screens, restarts and hardware reports have separate categories. Copy details includes recorded times without full file paths.
+- **Share your setup:** preview and save a 1200 × 675 PNG with hardware specs and a Flux wallpaper. Includes an optional title, reported VRAM and RAM details; excludes automatic personal names, IP addresses and serial numbers.
+- **Six Flux Fold wallpapers:** Dark, Light, Petrol, Sand, Plum and Rose, with a first-start appearance picker and an option to save the original JPG for your desktop.
+- Repeated system checks show resolved issues and measurable changes. Startup apps now has search and All / Enabled / Disabled filters.
+
+### Changed
+- New F logo, application/tray icons, Archivo SemiExpanded headings and reorganised navigation. Game mode has its own section; startup apps, Tweaks and Network sit under Optimize.
+- Overview puts findings and next steps first, with a compact live-metrics strip, clearer RAM/storage/network values, metric explanations and Windows-process labels in Top apps.
+- Clearer disk health details explain SSD endurance, operating hours and errors. Missing readings stay unknown; HDDs are not given a remaining-life percentage.
+- A wallpaper-backed startup screen waits for initial readings with a time limit. Fonts ship with Flux instead of loading from Google Fonts, charts use a consistent scale, and pages reuse their last readings while refreshing.
+- Update availability, download progress and restart prompts appear quietly in the sidebar. Details open when selected.
+- Cleaner defaults to temporary files; caches, crash logs and the Recycle Bin are separate options. "Big items" is now "Large files and optional cleanup" and no longer calls downloads safe to remove. Shorter text and clearer empty/error states throughout.
+
+### Fixed
+- Game mode verifies changes and restoration, retains its backup when restoration fails and offers retry. Manual stop pauses automatic activation for the current game; GPU preferences restore their previous values.
+- Background selection and desktop validation use the same catalog; retired presets migrate without losing appearance preferences.
+- Old system-check results are marked as outdated after time or relevant Flux changes. Live readings recover when an independent query fails instead of blocking behind a shared PowerShell process.
+- Starting with Windows no longer briefly shows the window before it hides to the tray. Startup apps tells a failed load (with Try again) apart from an empty list, and errors are shown in plain words.
+
 ## [1.2.1] - 2026-11-01
 
 ### Added
@@ -29,8 +54,6 @@
 - Copy report uses the Windows clipboard directly, so it works reliably.
 - The Tweaks confirmation for risky changes shows the right button text.
 
-See [release notes and verification limits](https://github.com/dafricnatopu/flux-optimizer-tool/releases/tag/v1.2.1).
-
 ## [1.2.0] - 2026-11-01
 
 ### Added
@@ -60,56 +83,94 @@ See [release notes and verification limits](https://github.com/dafricnatopu/flux
 - Windows Update repair restarts previously running services even when a cache rename fails.
 - Settings shows the installed app version instead of a cached version from a previous installation.
 
-## Verification and limitations
+## [1.1.0] - 2026-10-31
 
-- 49 automated tests passed, including disk-health assessment, report formatting, monitoring lifecycle, input validation and isolated restoration/cleanup tests.
-- Windows PowerShell syntax checks cover the new collectors and utility scripts. Windows Update repair failure handling is tested using fake service/filesystem commands, without changing actual Windows services.
-- Production renderer and Windows x64 NSIS installer builds.
-- Hardware health/SSD wear readings are device-reported estimates and may be unavailable, including after elevation. They do not guarantee future disk reliability.
-- Connection-quality results are diagnostic indications, not proof that a specific ISP or device is faulty.
-- Full Windows 10/11 VM compatibility testing and an installed-version auto-update round trip have not been completed.
+- Replace fake update results and animated health scores with actual results and explicit errors.
+- Redesign overview, navigation, network settings, tweaks and toolbox; add local activity history.
+- Unify welcome identity, compact empty activity, increase dashboard contrast and add actionable high-usage states with explicit download/upload units.
+- Add read-only security status, hardware temperatures/clocks, sampled load balance and shared system check results with verified coverage.
+- Add custom image/GIF backgrounds, background blur/dimming and accent-color settings.
+- Add grouped CPU/memory process inspection with protected system processes and confirmation before closing an app.
+- Recognize third-party antivirus providers and preserve pinned jump lists and in-progress downloads during cleanup.
+- Capture original registry values and DNS configuration before changes, verify writes and support restoration.
+- Restrict cleanup defaults, keep recent temporary files and report partial results; require separate Recycle Bin confirmation.
+- Preserve startup entry scope/type and label driver data as inventory.
+- Validate IPC senders and DNS inputs; use a strict PowerShell runner with on-demand elevation.
+- Point update publishing to the public distribution repository.
+- Add isolated regression tests and document required Windows VM checks before release.
 
-## Installation and updates
+## [1.0.2] - 2026-06-16
 
-Download `FluxOptimizer-Setup-v1.2.0.exe`. The `.blockmap`, `latest.yml` and `SHA256SUMS.txt` files support updates and file verification; they are not installers.
+### Added
+- **Dashboard:** Added a massive 2-column Discord Community Banner alongside the Smart Assistant to drive community growth.
+- **Installer:** Added `installer.nsh` to forcefully kill any running Flux.exe instances before uninstallation, guaranteeing a 100% clean wipe.
 
-Users on 1.1.0 can check for updates through the existing public release feed. Builds on an older feed (including some 1.0.1 installs) may require a manual installation of this version.
+### Changed
+- **Application:** Increased default starting window resolution from `1300x850` to `1350x900` to perfectly showcase the new Dashboard banners without requiring the user to scroll.
+- **UI:** Re-engineered the Sidebar circular gauges and text layout to prevent vertical UI jumping/shifting between Idle, Analyzing, and Optimized states.
+- **UI:** Replaced the generic CSS spinner on the Dashboard loading screen with a custom, glowing pulse-and-fade animation that matches the app's premium aesthetic.
+- **UI:** Added a smooth, continuous "Hyper-Scan" spinning animation to the Sidebar gauges during optimization.
+- **UI:** Completely redesigned the Update Banner into a full-screen, blurred modal with animated download progress embedded directly into the download button.
 
+### Fixed
+- **UI:** Fixed an issue where the Deep System Optimization in the Sidebar would flash a visible PowerShell window on the screen when requesting administrator privileges.
+- **UI:** Fixed the Deep System Scan logic in the Sidebar. The "Optimize" button no longer fakes the score to 100; instead, it performs a genuine background rescan to show your true system health after optimization.
+- **UI:** Fixed a bug in the Network page where the live speed graph tooltips incorrectly displayed values as percentages instead of actual speeds (KB/s and MB/s).
+- **Performance:** Optimized state management in Backup and Settings pages. Grouped related data updates together to eliminate micro-stuttering and prevent unnecessary UI re-renders, making the app feel snappier.
 
 ---
 
-# Flux 1.1.0
+## [1.0.1] - 2026-06-15
 
-Released 2026-10-31.
+### Added
+- **Toolbox:** Reset Windows Store Cache — fixes MS Store download issues (`wsreset.exe`)
+- **Toolbox:** Reset Network Stack — deep Winsock + TCP/IP reset for stubborn internet problems
+- **Tweaks:** Ultimate Performance Power Plan — hidden Windows power plan with zero throttling
+- **Tweaks:** Disable Fast Startup — fixes boot issues, dual-boot problems, and forced update installs
+- **Tweaks:** Disable Web Search in Start Menu — removes Bing results from Start search
+- **Tweaks:** Disable Lock Screen Ads — removes tips, tricks, and spotlight ads from lock screen
+- **Settings:** Fully implemented all 4 toggle options that previously had no effect:
+  - **Require Administrator:** App will automatically relaunch and request UAC if enabled
+  - **Debug Mode:** Automatically opens Chrome DevTools and logs configurations on startup
+  - **Action Toasts:** Toggling this setting now correctly hides success notifications
+  - **Driver Updates:** Automatically checks for >3 year old drivers 10 seconds after startup and warns via toast
+  - **Analytics Opt-in:** Toggle privacy settings for anonymous telemetry
+  - **Close to Tray:** App now minimizes to system tray instead of closing completely
+  - **Auto-check Updates:** Background update checking toggle
+- **Settings:** Added "Reset to Defaults" functionality to restore all preferences to default
+- **Settings:** Added "Restart required" red warning labels for settings that need app reload
 
-## What's new
+### Fixed
+- Fixed Backup & Restore "Create Restore Point" spawning visible PowerShell windows and hanging
+- Bypassed Windows 24-hour restore point limitation (`SystemRestorePointCreationFrequency = 0`)
+- Fixed Backup UI aggressively prompting for UAC on page load. Now gracefully displays an "Administrator Privileges Required" banner when running as a normal user.
+- Fixed React double-render bug causing duplicate UAC elevation prompts for fetching restore points.
+- Fixed app failing to start in development mode due to `start-minimized` configuration.
+- Fixed "Start on boot" setting not correctly registering/unregistering the app in the Windows Startup Manager.
+- Fixed Restart Graphics crash in Toolbox (broken PowerShell escaping replaced with Base64-encoded command)
+- Restart Graphics Driver no longer opens a visible PowerShell window
+- Restart Graphics Driver no longer requires administrator privileges (uses native Win+Ctrl+Shift+B shortcut)
 
-- Redesigned dashboard and navigation with clearer live CPU, GPU, memory, storage and network metrics.
-- Custom image/GIF backgrounds, blur, dimming and accent colors.
-- CPU/GPU temperatures and clocks where the hardware exposes them.
-- Read-only Windows security overview with third-party antivirus detection and on-demand update checks.
-- System check with specific findings and verified-check coverage.
-- Running apps grouped by CPU/memory use, with protected system processes and confirmation before closing an app.
-- Local activity history that distinguishes success, partial completion, failure and native tools being opened.
+### Changed
+- UI: Cleaned up Backup & Restore points list icons (removed background, simplified Restore button)
+- UI: Improved Settings menu icons (`Eye` for Privacy, `Wrench` for Advanced) and simplified Reset button style
 
-## Reliability changes
+### Changed
+- CPU info now shows physical cores and threads (e.g. 6C / 12T)
+- Removed ambient glow effect from Dashboard stat cards for a cleaner look
 
-- Supported registry tweaks save original values before applying changes and restore those values on request.
-- DNS changes target a selected adapter and can restore the original automatic/manual configuration.
-- Cleanup keeps recent files, pinned jump lists and in-progress downloads, avoids junctions, and reports actual results and partial failures. Recycle Bin deletion has separate confirmation.
-- Stronger IPC validation, strict PowerShell error handling, and elevation only when an operation needs it.
-- Driver information is an installed inventory. Load balance is a recent-load indication, not a proven gaming bottleneck or an FPS promise.
+---
 
-## Download and update
+## [1.0.0] - 2026-06-13 🎉 First Release
 
-Download `FluxOptimizer-Setup-v1.1.0.exe` from this release. `latest.yml` and the `.blockmap` file support application updates and are not installers.
-
-**Upgrading from 1.0.1:** install this version manually. Older builds can point to the previous update feed; 1.1.0 uses the public `dafricnatopu/flux-optimizer-tool` release feed.
-
-## Verification and limits
-
-- Production renderer build and Windows x64 NSIS installer build.
-- 26 automated tests passed, including isolated system-action, process, appearance, telemetry and security-state checks.
-- React Doctor: 100/100 for changed code.
-- Hardware sensors and Windows security/update queries can be unavailable. Unknown results remain labelled as unverified.
-- Exhaustive Windows 10/11 VM testing and an end-to-end upgrade from an installed older version have not been completed. Create a restore point before changing Windows settings.
+### Added
+- Initial public release of Flux Optimizer
+- Real-time Dashboard with CPU, GPU, RAM, Disk and Network charts
+- Performance Tweaks page
+- Junk Cleaner
+- Network tools (DNS switcher, ping test)
+- Startup Manager
+- Windows Update history
+- System Toolbox (SFC scan, disk cleanup, GPU/audio restart, etc.)
+- Automatic update notifications via GitHub Releases
+- Dynamic version number in sidebar (reads from package.json)
