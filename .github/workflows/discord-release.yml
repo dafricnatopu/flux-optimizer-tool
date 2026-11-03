@@ -1,0 +1,69 @@
+# Posts the release notes to Discord when a release is published on GitHub.
+# Setup (once):
+#   1. Discord: channel settings → Integrations → Webhooks → New Webhook → Copy Webhook URL.
+#   2. GitHub: repo Settings → Secrets and variables → Actions → New repository secret
+#      named DISCORD_RELEASE_WEBHOOK with that URL.
+# The notes come from the release description; if it is empty, from the matching
+# "## [x.y.z]" section of CHANGELOG.md (when the repo has one).
+# Put this file in the repo where releases are PUBLISHED (flux-optimizer-tool), because
+# GitHub only runs it for releases in its own repo.
+name: Announce release on Discord
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+jobs:
+  announce:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build and send the Discord message
+        env:
+          WEBHOOK: ${{ secrets.DISCORD_RELEASE_WEBHOOK }}
+          TAG: ${{ github.event.release.tag_name }}
+          NAME: ${{ github.event.release.name }}
+          URL: ${{ github.event.release.html_url }}
+          BODY: ${{ github.event.release.body }}
+        run: |
+          set -euo pipefail
+          if [ -z "${WEBHOOK}" ]; then echo "DISCORD_RELEASE_WEBHOOK is not set, skipping."; exit 0; fi
+          VERSION="${TAG#v}"
+
+          NOTES="${BODY}"
+          if [ -z "$(echo "${NOTES}" | tr -d '[:space:]')" ] && [ -f CHANGELOG.md ]; then
+            NOTES="$(awk -v v="${VERSION}" '
+              $0 ~ "^## \\[" v "\\]" { found=1; next }
+              found && /^## \[/ { exit }
+              found { print }' CHANGELOG.md)"
+          fi
+
+          # Discord-friendly: "### Added" becomes a bold line, long notes are cut with a link.
+          NOTES="$(printf '%s\n' "${NOTES}" | sed -E 's/^#{1,4} (.*)$/**\1**/')"
+          MAX=3600
+          if [ "${#NOTES}" -gt "${MAX}" ]; then
+            NOTES="${NOTES:0:${MAX}}"$'\n\n'"…"
+          fi
+          NOTES="${NOTES}"$'\n\n'"**[Download Flux ${VERSION}](${URL})**"
+
+          jq -n \
+            --arg title "${NAME:-Flux ${VERSION}}" \
+            --arg url "${URL}" \
+            --arg notes "${NOTES}" \
+            --arg version "${VERSION}" \
+            '{
+              username: "Flux",
+              embeds: [{
+                title: ("⚡ " + $title),
+                url: $url,
+                description: $notes,
+                color: 7250175,
+                footer: { text: ("Flux " + $version + " · Flux updates itself, or download it from GitHub") }
+              }]
+            }' > payload.json
+
+          curl --fail --silent --show-error -H "Content-Type: application/json" -d @payload.json "${WEBHOOK}"
