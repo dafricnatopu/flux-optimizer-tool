@@ -3,31 +3,31 @@
 
   # Flux
 
-  **Find common PC slowdowns, review Windows problems and maintain your system.**
+  **See what’s slowing down your PC. You decide what changes.**
 
   [![Latest release](https://img.shields.io/github/v/release/dafricnatopu/flux-optimizer-tool)](https://github.com/dafricnatopu/flux-optimizer-tool/releases/latest)
   [![Downloads](https://img.shields.io/github/downloads/dafricnatopu/flux-optimizer-tool/total)](https://github.com/dafricnatopu/flux-optimizer-tool/releases)
   [![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-blue)](https://github.com/dafricnatopu/flux-optimizer-tool/releases/latest)
 </div>
 
-## Download Flux 1.3.0
+## Download Flux 1.4.0
 
-[**Download the Windows x64 installer**](https://github.com/dafricnatopu/flux-optimizer-tool/releases/download/v1.3.0/FluxOptimizer-Setup-v1.3.0.exe)
+[**Download the Windows x64 installer**](https://github.com/dafricnatopu/flux-optimizer-tool/releases/download/v1.4.0/FluxOptimizer-Setup-v1.4.0.exe)
 
-Run `FluxOptimizer-Setup-v1.3.0.exe`. The `.blockmap` and `latest.yml` assets are for the updater; download the `.exe` to install Flux.
+Run `FluxOptimizer-Setup-v1.4.0.exe` on Windows 10 or 11. The `.blockmap` and `latest.yml` files are for the updater. Use `SHA256SUMS.txt` to verify the download.
 
-If the installer cannot close an existing Flux instance, save your work and fully quit Flux from its tray menu before retrying. Very old builds using the previous update feed should be updated manually.
+If setup asks you to close Flux, select **Quit Flux** from the tray menu and then retry. Very old builds using the previous update feed should be updated manually.
 
-## New in 1.3.0
+## New in 1.4.0
 
-- **Game mode:** supported-game detection, temporary power/gaming settings, optional automatic activation and restoration of saved originals.
-- **Crashes & restarts:** grouped Windows event records, graphics-driver resets, readable error explanations and copyable details.
-- **Share your setup:** a previewable hardware card, saved as PNG without automatic personal names or serial numbers.
-- **A new look:** F logo, six Flux Fold wallpapers, wallpaper downloads, local fonts and a calmer startup screen.
-- **Clearer Overview:** compact live readings, explanations, stale-check indicators and changes since the previous check.
-- Searchable startup apps, more informative disk health and quieter update notifications in the sidebar.
+- **Ask Flux AI** answers PC and Windows questions and can open the relevant Flux page. Open it from the title bar or press Ctrl+K. Sign-in is required and a daily question limit applies.
+- **Optional account** with Discord or Google sign-in. Local diagnostics and maintenance are available without an account.
+- **Five interface languages** in the sidebar account menu. Choose English, Czech, Slovak, German or Polish. Some diagnostic text remains in English.
+- **Network diagnostics** add longer stability tests, an internet speed test and Wi-Fi details. DNS presets support IPv6 where available, and Flux can restore the saved IPv4 and IPv6 settings.
+- **Game mode** has better detection and artwork for supported games, including Valorant and Phasmophobia. Flux restores saved Windows settings before an in-app update starts.
+- **Clearer diagnostics and cleanup** with more informative memory readings, check results and confirmed cleanup totals.
 
-See the [full changelog](CHANGELOG.md).
+See the [1.4.0 release notes](https://github.com/dafricnatopu/flux-optimizer-tool/releases/tag/v1.4.0) and the [changelog for earlier versions](CHANGELOG.md).
 
 ## Other tools
 
@@ -40,9 +40,9 @@ See the [full changelog](CHANGELOG.md).
 
 ## Verification and limits
 
-93 automated tests pass on Windows. The renderer and x64 installer are built locally, and packaged files and updater hashes are checked before publication. SHA-256 checksums are included with the downloads.
+252 automated tests passed for 1.4.0 on Windows. The installer contents and updater metadata were verified before publication, and SHA-256 checksums are available with the release.
 
-Game mode does not promise an FPS increase. Windows events, network measurements and disk counters are diagnostic observations; missing readings remain unknown. Automatic closure during an in-place upgrade has not been verified for this release. These checks do not replace testing across every Windows version and hardware configuration.
+Windows events, network measurements and disk counters describe what was observed. Missing readings stay unknown. Game mode changes supported Windows settings for the duration of a game, and its effect on performance varies by system.
 
 System changes can require administrator permission. Review the action and create a restore point when appropriate. Deleted files cannot be recovered through Flux; supported setting restoration requires originals saved by Flux.
 
